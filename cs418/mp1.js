@@ -135,7 +135,7 @@ function setupBuffers() {
   vertexPositionBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
   var triangleVertices = [
-      -0.25, 0.75, 0, 
+      -0.25, 0.75 , 0, 
       0.5, 0.75, 0, 
       0.5, 0.5, 0, 
       0, 0.5, 0, 
@@ -151,13 +151,14 @@ function setupBuffers() {
   vertexColorBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexColorBuffer);
   var colors = [
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.8, 1.0,
-        0.0, 0.0, 0.8, 1.0,
-        0.0, 0.0, 0.5, 1.0,
+        0.0, 0.9, 0.9, 1.0, 
+        0.0, 0.9, 0.9, 1.0, 
+        0.0, 0.6, 0.6, 1.0,
+        0.0, 0.6, 0.6, 1.0,
+        0.0, 0.6, 0.6, 1.0,
+        0.0, 0.6, 0.6, 1.0, 
+        0.0, 0.9, 0.9, 1.0
+
     ];
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
   vertexColorBuffer.itemSize = 4;
@@ -181,10 +182,11 @@ function setupBuffers() {
   vertexColorBuffer2 = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexColorBuffer2);
   var colors2= [
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.5, 1.0
+            0.0, 0.6, 0.6, 1.0,
+        0.0, 0.6, 0.6, 1.0,
+        0.2, 0.4, 0.9, 1.0,
+        0.2, 0.4, 0.9, 1.0,
+
     ];
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors2), gl.STATIC_DRAW);
   vertexColorBuffer2.itemSize = 4;
@@ -210,13 +212,13 @@ function setupBuffers() {
   vertexColorBuffer3 = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexColorBuffer3);
   var colors3= [
+         0.0, 0.0, 0.5, 1.0,
         0.0, 0.0, 0.5, 1.0,
+        0.2, 0.4, 0.9, 1.0,
+        0.2, 0.4, 0.9, 1.0,
+        0.2, 0.4, 0.9, 1.0,
+        0.2, 0.4, 0.9, 1.0,
         0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.1, 1.0,
-        0.0, 0.0, 0.5, 1.0,
-        0.0, 0.0, 0.1, 1.0,
-        0.0, 0.0, 0.1, 1.0, 
-        0.0, 0.0, 0.5, 1.0
     ];
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors3), gl.STATIC_DRAW);
   vertexColorBuffer3.itemSize = 4;
@@ -393,13 +395,10 @@ function draw() {
   gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);  
   mat4.identity(mvMatrix);
-    /* 1,  0,  0,  0,
-     0,  1,  0,  0,
-     0,  0,  1,  0,
-     tx, ty, tz, 1 */
   mat4.rotateX(mvMatrix, mvMatrix, degToRad(rotAngle));
   mat4.rotateZ(mvMatrix, mvMatrix, degToRad(rotAngle));
-  mat4.scale(mvMatrix, mvMatrix, [1,Math.sin(degToRad(rotAngle))+1,1]);
+ mat4.scale(mvMatrix, mvMatrix, [Math.sin(degToRad(rotAngle))+1,Math.cos(degToRad(rotAngle))+1,1]);
+ // mat4.translate(mvMatrix, mvMatrix,[(Math.sin(degToRad(rotAngle))),0,(Math.sin(degToRad(rotAngle)))]);
     if (!(document.getElementById("myCheck").checked))
     {
       gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
