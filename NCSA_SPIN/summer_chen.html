@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Raytracing and Material's Optical Properties</title>
+	</head>
+	<body><h1>Raytracing and Material's Optical Properties</h1>
+        <p>
+            Emily Chen <br>
+            Mentor: Professor Andre Schleife <br> 
+            National Center for Super Computing Applications SPIN project <br>
+            Univerity of Illinois at Urbana Champaign 
+        </p>
+		<p>The goal of this project has been to observe material&rsquo;s optical properties through raytracing and to automate and virtualize to make the program more user-friendly and accessible. We would love to see this program assist researchers in materials design by allowing them to alter the spectral and absorption until the desired optical properties of the materials is achieved. Because the engine we use is a physically based rendering engine, the resulting images produced will reflect the ideal material&rsquo;s optical properties. </p>
+		<p>We have been utilizing and experimenting with Blender as a 3D modeling engine, and LuxRender as the physically based rendering engine. In order to automate the process, we have currently created python scripts which can create different scenes with different objects to apply the material data to. We have been running all of the scripts on the Campus Clusters at the University of Illinois at Urbana-Champaign, allowing most of the runs to render for approximately four hours. </p>
+		<p>We ran several sweeps to see how the materials&rsquo; optical properties would change as different traits of the materials are changed. The first run was varying the physical lengths of the materials to see how length would be rendered though Blender and LuxRender. This, however, seemed to make no change in the light transmission through the material, even though we expected that as the length would increase, the light transmission would decrease. We placed the light source directly behind the material, while changing the length in metric units in Blender. However, the results remained constant, as can be seen below in some of the images from the runs.</p>
+		<p>
+            <img src="run1cm.png" alt="1 cm thickness" height="270" width="480">
+            <img src="run1m.png" alt="1 m thickness" height="270" width="480"> <br>
+           <img src="run5m.png" alt="5 m thickness" height="270" width="480">
+            <img src="run10m.png" alt="10 m thickness" height="270" width="480">  
+        </p>
+        <p> 
+		We also created Python scripts that can automatically generate absorption spectrum .dat files. This allows researchers to create the input .dat files easily to render a large range of values for their specific sweep. We have been using the following equations to generate the .dat files, and the resulting .dat files give the wavelength (nm) and the absorption spectrum at that specific wavelength (1/cm): 
+		</p>
+        <p>
+        <img src="eq1.png" alt="eq1"height="69" width="374">
+        <img src="eq4.png" alt="eq1"height="69" width="374">
+        </p>
+        <p>
+        <img src="eq2.png" alt="eq2"height="69" width="374">
+        <img src="eq3.png" alt="eq3"height="69" width="374"> <br> 
+        <img src ="eq5.png" alt = "eq5"height="246" width="379" >
+            
+        </p>
+		<p>
+		We varied the parameters in the equations to see how changing specific variables that contribute to the absorption spectrum data. The renderings from these runs proved to be successful, as a clear change in a material&rsquo;s optical properties can be seen, and results from these tests will be shown below. We are working on expanding this and automate the entire process of scene creation, .dat file generation and rendering. The hope is to only require initial sweep range of a variable, and parameter values to be able to create a specific scene with a range of absorption inputs. The absorption spectrum range to test can then be seen and estimated through the renderings, as the only range of interest is while the material&rsquo;s optical properties' changes are observable. The below renderings are from a run where the height and peak position were fixed, but the broadening value was swept from 0 to 1.35 eV. The optical property change is evident at first, but begins to decrease as the broadening value increases.  
+		</p>
+        <p>
+            <img src="bs1.png" alt="bs1"height="450" width="180">
+            <img src="bs2.png" alt="bs2"height="450" width="180">
+            <img src="bs3.png" alt="bs3"height="450" width="180">
+            <img src="bs4.png" alt="bs4"height="450" width="180">
+            <img src="bs5.png" alt="bs5"height="450" width="180">
+        </p>
+		<p>
+		The most current run has been experimenting with the surface roughness of materials to see how this changes materials&rsquo; optical properties. We have been trying to find a consistent way of breaking up the geometries on the object&rsquo;s surface in Blender. This has included creating smaller sub-surfaces, triangulating the face of lens and increasing the triangulation count. However, the challenges with this is the limitations that the computer&rsquo;s memory places on how many geometries can be on the surface of a material. The creation and usage of more geometries requires more memory, and thus crashes the computer on which our tests have been running. The next step is to alter the subsurface and triangulation values in the Python scripts and to run the renderings on the high memory nodes on the Campus Cluster. 
+		</p>
+        <p>
+            <img src="r1.png" alt="bs1" height="270" width="480">
+            <img src="rough11.Scene.00001.png" alt="bs1" height="270" width="480"> <br>
+            <img src="rough2.Scene.00001.png" alt="f2" height="270" width="480"> 
+            <img src="rough3.Scene.00001.png" alt="f3" height="270" width="480"> <br>
+            <img src="rough4.Scene.00001.png" alt="r4" height="270" width="480">
+            <img src="rough5.Scene.00001.png" alt="r5" height="270" width="480">
+        </p>
+		<p>
+		Our future goals for this project include creating a web interface that allows individuals to remotely use the program to work on materials design and to create renderings of materials with specific optical properties. We are continually working towards fully utilizing the capabilities of Blender, LuxRender and the Campus Cluster to be able to create accurate renderings of materials for potential use in computerized materials design work. 
+		</p>
+
+        <p>
+        Software used: 
+        </p>
+        <ul>
+	        <li> <a href="https://www.blender.org/"> Blender 2.75</a>: 3D modeling/rendering engine </li>
+	        <li> <a href="http://www.luxrender.net/en_GB/index"> LuxRender</a>: Physically based full spectral rendering engine</li>
+	        <li> <a href= "https://campuscluster.illinois.edu/"> UIUC Campus Cluster</a>: network nodes to run the rendering processes on </li>
+	        <li> <a href="https://www.jetbrains.com/pycharm/"> PyCharm</a>: Python programming enviornment </li>
+            <li> <a href="https://plot.ly/"> PlotLy</a>: graph plotting software </li>
+	    </ul>
+	</body>
+</html>
