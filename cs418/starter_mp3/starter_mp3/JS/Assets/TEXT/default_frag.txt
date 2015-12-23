@@ -1,0 +1,31 @@
+precision mediump float;    
+
+uniform vec3 uAmbientLightColor;
+uniform vec3 uDiffuseLightColor;
+uniform vec3 uSpecularLightColor;
+
+
+varying vec3 LightVector;               
+varying vec3 viewVector;                
+varying vec3 transformedVertexNormal; 
+
+uniform samplerCube cube_texture; 
+
+varying vec3 vColor;
+varying mat3 invMat;
+
+void main()                 
+{                          
+    vec3 nTVN = normalize(transformedVertexNormal);                                     
+    vec3 nLV =  normalize(LightVector);                                         
+    vec3 nVV =  normalize(viewVector);                                          
+
+    vec3 rV = (reflect(-nLV, nTVN));
+
+    vec3 diffuse = max(dot(nTVN, nLV), 0.0) * uDiffuseLightColor;
+    vec3 specular = pow(max(dot(rV, nVV), 0.0), 8.0) * uSpecularLightColor;
+    
+    vec4 envCol =  textureCube(cube_texture, (vec3(reflect(-nVV, nTVN))));
+    
+    gl_FragColor = vec4(specular + diffuse * envCol.xyz,1.0);      
+}                           
