@@ -1,0 +1,1 @@
+Please note that all files in CS 418 folder will be removed shortly. This is due to content of files being current coursework for students currently in the class. Please contact me at echen33@illinois.edu for Dropbox or Google Drive links to project files. 
