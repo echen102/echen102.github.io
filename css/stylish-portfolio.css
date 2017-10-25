@@ -47,7 +47,7 @@ body {
   color: #333;
   border: none;
   border-radius: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: #C5C1C0;
 }
 
 .btn-light:hover, .btn-light:focus, .btn-light:active {
@@ -78,7 +78,7 @@ hr.small {
   -o-transition: all .4s ease 0s;
   transition: all .4s ease 0s;
   transform: translateX(250px);
-  background: #222;
+  background: #0A1612;
 }
 
 .sidebar-nav {
@@ -98,7 +98,7 @@ hr.small {
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
-  color: #999;
+  color: #C5C1C0;
 }
 
 .sidebar-nav li a:hover {
@@ -118,7 +118,7 @@ hr.small {
 }
 
 .sidebar-nav>.sidebar-brand a {
-  color: #999;
+  color: #C5C1C0;
 }
 
 .sidebar-nav>.sidebar-brand a:hover {
@@ -157,7 +157,7 @@ hr.small {
   display: table;
   width: 100%;
   height: 100%;
-  background: url(../img/bg.jpg) no-repeat center center scroll;
+  background: url(../img/bg.jpeg) no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -207,6 +207,7 @@ hr.small {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
 
 .img-portfolio {
   margin: 0 auto;
@@ -258,4 +259,39 @@ footer {
   bottom: 5px;
   display: none;
   padding: 15px 20px;
+}
+
+.new_container {
+  position: relative;
+    margin-bottom: 30px;
+}
+
+
+/* Overlay for portfolio items */
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #C5C1C0;
+}
+
+.new_container:hover .overlay {
+  opacity: .7;
+}
+
+.text {
+  color: #212529;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
