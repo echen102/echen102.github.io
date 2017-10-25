@@ -35,7 +35,7 @@ body {
   color: #fff;
   border: none;
   border-radius: 0;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, .5);
 }
 
 .btn-dark:hover, .btn-dark:focus, .btn-dark:active {
@@ -202,6 +202,7 @@ hr.small {
 
 .portfolio {
   padding: 50px 0;
+/*    background: #C5C1C0;*/
 }
 
 .portfolio-item {
@@ -211,6 +212,7 @@ hr.small {
 
 .img-portfolio {
   margin: 0 auto;
+
 }
 
 .img-portfolio:hover {
@@ -283,7 +285,7 @@ footer {
 }
 
 .new_container:hover .overlay {
-  opacity: .7;
+  opacity: .8;
 }
 
 .text {
